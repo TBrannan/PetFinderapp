@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import Select from "react-select";
+import { Component } from "react";
 
 class PostList extends React.Component {
   constructor(props) {
@@ -6,33 +8,45 @@ class PostList extends React.Component {
 
     this.state = {
       data: [],
-      total: [],
+      selectedOption: "None",
     };
   }
 
+  handleChange = ({ target }) => {
+    this.setState({
+      selectedOption: target.value,
+    });
+  };
+
   componentDidMount() {
-    // for (const [index, element] of data.entries()) {
-    //     console.log(element.package.name);
-    //   }
-    // GET request using fetch with set headers
     const headers = { "Content-Type": "application/json" };
     fetch("https://api.npms.io/v2/search?q=react", { headers })
       .then((response) => response.json())
-      .then((data) => this.setState({ data: data.results, total: data.total }));
+      .then((data) => this.setState({ data: data.results }));
   }
 
   render() {
-    const total = this.state.total;
-    const data = this.state.data;
-    const names = [];
-    for (const element of data) {
-      names.push(element.package.name);
+    const something = this.state.data;
+    const myMap = new Map();
+
+    for (const [key, value] of Object.entries(something)) {
+      myMap.set(key, value.package.name);
     }
+
+    const options = [...myMap].map(([name, label]) => ({ name, label }));
+
     return (
-      <div className="card text-center m-3">
-        <h5 className="card-header">GET Request with Set Headers</h5>
-        <div className="card-body">total: {total}</div>
-        <div className="card-body">names: {names.join(", ")}</div>
+      <div>
+        {/* <span>{this.state.selectedOption}</span> */}
+        <select
+          className="droptext"
+          value={this.state.selectedOption}
+          onChange={this.handleChange}
+        >
+          {options.map(({ value, label }, index) => (
+            <option value={value}>{label}</option>
+          ))}
+        </select>
       </div>
     );
   }

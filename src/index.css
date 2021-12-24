@@ -122,64 +122,86 @@ h1 {
   color: black;
   font-size: 50px;
   font-weight: normal;
-  line-height: 2em;
   opacity: 0.8;
 }
 
 .dropdown {
+  display: flex;
   background-color: white;
-  font-size: 25px;
   color: black;
-  font-weight: normal;
-  border-width: 5px;
-  width: 20%;
-  padding: 1em;
-  inline-size: auto;
-  line-height: 2em;
 }
 
 .droptitle {
-  inline-size: auto;
   font-family: Arial, Helvetica, sans-serif;
   color: black;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 700;
-  padding: 1em;
 }
 
 .droptext {
-  inline-size: auto;
   font-family: Arial, Helvetica, sans-serif;
   color: black;
   font-size: 18px;
 }
 
-.selection {
-  width: 60%;
-  border: solid 1px;
-  border-radius: 10px;
-  position: relative;
-}
-
-.selection h2 {
-  text-align: center;
-}
-
 .ziptitle {
-  inline-size: auto;
   font-family: Arial, Helvetica, sans-serif;
   color: black;
   font-size: 20px;
   font-weight: 700;
-  padding: 1em;
 }
 
 .zipbox {
-  inline-size: auto;
+  display: flex;
   font-family: Arial, Helvetica, sans-serif;
   color: black;
-  padding: 0.1em;
-  width: 7em;
   font-size: 16px;
   font-weight: 600;
+}
+
+.box1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.box2 {
+  display: flex;
+  flex-direction: column;
+}
+
+.box3 {
+  display: flex;
+  flex-direction: column;
+}
+
+.box4 {
+  display: flex;
+  flex-direction: column;
+  -ms-flex-align: center;
+  margin-top: 1px;
+}
+
+.box5 {
+  display: flex;
+  flex-direction: column;
+}
+
+.box6 {
+  display: flex;
+  flex-direction: column;
+}
+
+.main1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.main2 {
+  display: flex;
+  flex-direction: column;
+}
+
+.main3 {
+  display: flex;
+  flex-direction: column;
 }
