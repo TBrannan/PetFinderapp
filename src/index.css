@@ -11,18 +11,16 @@ body {
 }
 
 .container {
-  max-width: 1440px;
-  margin: 30px auto;
+  max-width: 600px;
+  margin: 10px 10%;
   overflow: auto;
   min-height: 1000px;
-  padding: 30px;
   border-radius: 5px;
   position: relative;
 }
 
 .header {
   display: flex;
-  justify-content: center;
   margin-bottom: 20px;
 }
 
@@ -41,9 +39,8 @@ body {
 }
 
 .btn-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-flex;
+  flex-direction: column;
   height: 30px;
 }
 
@@ -67,54 +64,8 @@ body {
   cursor: pointer;
 }
 
-.task.reminder {
-  border-left: 5px solid green;
-}
-
-.task h3 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.add-form {
-  margin-bottom: 40px;
-}
-
-.form-control {
-  margin: 20px 0;
-}
-
 .form-control label {
   display: block;
-}
-
-.form-control input {
-  width: 100%;
-  height: 40px;
-  margin: 5px;
-  padding: 3px 7px;
-  font-size: 17px;
-}
-
-.form-control-check {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.form-control-check label {
-  flex: 1;
-}
-
-.form-control-check input {
-  flex: 2;
-  height: 20px;
-}
-
-footer {
-  margin-top: 30px;
-  text-align: center;
 }
 
 h1 {
@@ -126,12 +77,15 @@ h1 {
 }
 
 .dropdown {
-  display: flex;
+  display: inline-flex;
+  flex-direction: column;
   background-color: white;
   color: black;
 }
 
 .droptitle {
+  display: inline-flex;
+  flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
   color: black;
   font-size: 16px;
@@ -139,12 +93,16 @@ h1 {
 }
 
 .droptext {
+  display: inline-flex;
+  flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
   color: black;
   font-size: 18px;
 }
 
 .ziptitle {
+  display: inline-flex;
+  flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
   color: black;
   font-size: 20px;
@@ -152,7 +110,6 @@ h1 {
 }
 
 .zipbox {
-  display: flex;
   font-family: Arial, Helvetica, sans-serif;
   color: black;
   font-size: 16px;
@@ -160,48 +117,55 @@ h1 {
 }
 
 .box1 {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
 }
 
 .box2 {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
 }
 
 .box3 {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
 }
 
 .box4 {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
-  -ms-flex-align: center;
-  margin-top: 1px;
 }
 
 .box5 {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
 }
 
 .box6 {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
 }
 
 .main1 {
   display: flex;
   flex-direction: column;
+  align-content: center;
+  align-items: center;
 }
 
 .main2 {
   display: flex;
   flex-direction: column;
+  border-style: solid;
+  border-width: 0.2em;
+  border-radius: 0.5em;
+  padding: 10px;
+  border-spacing: 3em;
 }
 
 .main3 {
   display: flex;
   flex-direction: column;
+  align-items: left;
+  align-content: left;
 }

@@ -12,6 +12,7 @@ function App() {
       <div className="main2">
         <Content />
       </div>
+      <br />
       <div className="main3">
         <Button />
       </div>

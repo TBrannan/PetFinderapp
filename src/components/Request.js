@@ -36,7 +36,7 @@ class PostList extends React.Component {
     const options = [...myMap].map(([name, label]) => ({ name, label }));
 
     return (
-      <div>
+      <>
         {/* <span>{this.state.selectedOption}</span> */}
         <select
           className="droptext"
@@ -47,7 +47,7 @@ class PostList extends React.Component {
             <option value={value}>{label}</option>
           ))}
         </select>
-      </div>
+      </>
     );
   }
 }

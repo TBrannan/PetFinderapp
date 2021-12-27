@@ -4,22 +4,14 @@ import Request from "./Request";
 const Content = () => {
   return (
     <div className="dropdown">
+      <br />
       <div className="box1">
         <label className="droptitle">Animal</label>
         <Request />
       </div>
-      <div className="box6">
-        <label className="droptitle">Breed</label>
-        <select value="test" className="droptext" name="gender">
-          <option value="any">Any</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
       <br />
       <div className="box2">
-        <label className="droptitle">Color</label>
+        <label className="droptitle">Breed</label>
         <select className="droptext" name="gender">
           <option value="any">Any</option>
           <option value="male">Male</option>
@@ -29,7 +21,7 @@ const Content = () => {
       </div>
       <br />
       <div className="box3">
-        <label className="droptitle">Gender</label>
+        <label className="droptitle">Color</label>
         <select className="droptext" name="gender">
           <option value="any">Any</option>
           <option value="male">Male</option>
@@ -39,11 +31,21 @@ const Content = () => {
       </div>
       <br />
       <div className="box4">
+        <label className="droptitle">Gender</label>
+        <select className="droptext" name="gender">
+          <option value="any">Any</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <br />
+      <div className="box5">
         <label className="droptitle">Zicode</label>
         <input className="droptitle" type="text" name="zipcode" />
       </div>
       <br />
-      <div className="box5">
+      <div className="box6">
         <label className="droptitle">Distance</label>
         <select className="droptext" name="gender">
           <option value="any">Any</option>
@@ -51,6 +53,7 @@ const Content = () => {
           <option value="female">20 mi</option>
           <option value="other">30 mi</option>
         </select>
+        <br />
       </div>
     </div>
   );
