@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import Request from "./Request";
+import Request from "./Dropdown";
 
 const Content = () => {
   return (

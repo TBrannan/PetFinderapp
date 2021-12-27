@@ -1,55 +1,31 @@
-import React, { useState } from "react";
-import Select from "react-select";
-import { Component } from "react";
+import PropTypes from "prop-types";
 
-class PostList extends React.Component {
-  constructor(props) {
-    super(props);
+const send = () => {
+  const data = new Map();
+  const client_id = "<client_id>";
+  const client_secret = "<client_secret>";
+  data["grant_type"] = "client_credentials";
+  data["client_id"] = client_id;
+  data["client_secret"] = client_secret;
 
-    this.state = {
-      data: [],
-      selectedOption: "None",
-    };
-  }
-
-  handleChange = ({ target }) => {
-    this.setState({
-      selectedOption: target.value,
+  async function postData(url = "", data = {}) {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
     });
-  };
-
-  componentDidMount() {
-    const headers = { "Content-Type": "application/json" };
-    fetch("https://api.npms.io/v2/search?q=react", { headers })
-      .then((response) => response.json())
-      .then((data) => this.setState({ data: data.results }));
+    return response.json();
   }
 
-  render() {
-    const something = this.state.data;
-    const myMap = new Map();
-
-    for (const [key, value] of Object.entries(something)) {
-      myMap.set(key, value.package.name);
+  let token = postData("https://api.petfinder.com/v2/oauth2/token", data).then(
+    (data) => {
+      console.log(data["access_token"]);
     }
+  );
 
-    const options = [...myMap].map(([name, label]) => ({ name, label }));
+  return <></>;
+};
 
-    return (
-      <>
-        {/* <span>{this.state.selectedOption}</span> */}
-        <select
-          className="droptext"
-          value={this.state.selectedOption}
-          onChange={this.handleChange}
-        >
-          {options.map(({ value, label }, index) => (
-            <option value={value}>{label}</option>
-          ))}
-        </select>
-      </>
-    );
-  }
-}
-
-export default PostList;
+export default send;
