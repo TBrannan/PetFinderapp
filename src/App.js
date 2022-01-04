@@ -2,7 +2,8 @@ import "./App.css";
 import Header from "./components/Header";
 import Content from "./components/Content";
 import Button from "./components/Button";
-import Request from "./components/Request";
+import Request from "./components/Token";
+import Fetch from "./components/Fetch";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Button />
       </div>
       <Request />
+      <Fetch />
     </div>
   );
 }

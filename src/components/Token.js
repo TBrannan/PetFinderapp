@@ -1,12 +1,10 @@
-import PropTypes from "prop-types";
+import { mySecrets } from "./env.js";
 
 const send = () => {
   const data = new Map();
-  const client_id = "<client_id>";
-  const client_secret = "<client_secret>";
   data["grant_type"] = "client_credentials";
-  data["client_id"] = client_id;
-  data["client_secret"] = client_secret;
+  data["client_id"] = mySecrets()["id"];
+  data["client_secret"] = mySecrets()["secret"];
 
   async function postData(url = "", data = {}) {
     const response = await fetch(url, {
@@ -21,11 +19,11 @@ const send = () => {
 
   let token = postData("https://api.petfinder.com/v2/oauth2/token", data).then(
     (data) => {
-      console.log(data["access_token"]);
+      return (data["Token"] = data);
     }
   );
 
-  return <></>;
+  return data["Token"];
 };
 
 export default send;
