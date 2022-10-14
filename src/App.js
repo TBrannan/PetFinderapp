@@ -18,8 +18,8 @@ function App() {
       <div className="main3">
         <Button />
       </div>
-      <Request />
-      <Fetch />
+      {/* <Request />
+      <Fetch /> */}
     </div>
   );
 }
