@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Content from "./components/Content";
 import Button from "./components/Button";
-import Request from "./components/Token";
+import Test from "./components/Test";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
       <div className="main3">
         <Button />
       </div>
-      {/* <Request /> */}
+      <Test />
     </div>
   );
 }

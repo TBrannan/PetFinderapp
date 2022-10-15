@@ -1,13 +1,14 @@
 import React from "react";
 import get_token from "./Token";
 
-class PostList extends React.Component {
+class Test extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       data: [],
       selectedOption: "None",
+      value: "Something",
     };
   }
 
@@ -25,7 +26,10 @@ class PostList extends React.Component {
           "Content-Type": "application/json",
           Authorization: `Bearer ${key["access_token"]}`,
         };
-        fetch("https://api.petfinder.com/v2/types", { headers })
+        fetch(
+          "https://api.petfinder.com/v2/animals?type=dog&distance=10&location=33619",
+          { headers }
+        )
           .then((response) => response.json())
           .then((data) => this.setState({ data: data }));
       });
@@ -34,6 +38,9 @@ class PostList extends React.Component {
   render() {
     const something = this.state.data;
     const myMap = new Map();
+
+    const textFromStorage = localStorage.getItem("animal");
+    console.log(textFromStorage);
 
     for (var k in something) {
       var length = something[k].length;
@@ -51,7 +58,6 @@ class PostList extends React.Component {
           className="droptext"
           value={this.state.selectedOption}
           onChange={this.handleChange}
-          Storage={localStorage.setItem("animal", this.state.selectedOption)}
         >
           {options.map(({ value, label }, index) => (
             <option value={value}>{label}</option>
@@ -62,4 +68,4 @@ class PostList extends React.Component {
   }
 }
 
-export default PostList;
+export default Test;
