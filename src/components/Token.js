@@ -16,16 +16,6 @@ const send = () => {
     }
   });
 
-  get_token
-    .then((token) => {
-      token.json().then((json) => {
-        console.log(json["access_token"]);
-      });
-    })
-    .catch((token) => {
-      console.log("catching " + token);
-    });
-
   return get_token;
 };
 
