@@ -34,16 +34,20 @@ class Color extends React.Component {
   render() {
     const something = this.state.data;
     const myMap = new Map();
-    console.log(something);
 
     function get_color(number) {
-      for (var k in something) {
-        var size = Object.keys(something[k]).length;
-        for (var i = 0; i < size; i++) {
-          myMap.set(
-            something[k][number]["colors"][i],
-            something[k][number]["colors"][i]
-          );
+      if (number === "None") {
+        myMap.set("Something", "Select Animal");
+        myMap.set("Something2", "Select Animal");
+      } else {
+        for (var k in something) {
+          var size = Object.keys(something[k]).length;
+          for (var i = 0; i < size; i++) {
+            myMap.set(
+              something[k][number]["colors"][i],
+              something[k][number]["colors"][i]
+            );
+          }
         }
       }
     }
@@ -64,6 +68,8 @@ class Color extends React.Component {
       get_color(6);
     } else if (localStorage.getItem("animal") === "Barnyard") {
       get_color(7);
+    } else {
+      get_color("None");
     }
 
     const options = [...myMap].map(([name, label]) => ({ name, label }));

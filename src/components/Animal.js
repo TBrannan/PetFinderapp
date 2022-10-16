@@ -38,6 +38,7 @@ class Animal extends React.Component {
     for (var k in something) {
       var length = something[k].length;
       for (var i = 0; i < length; i++) {
+        myMap.set(null, null);
         myMap.set(something[k][i]["name"], something[k][i]["name"]);
       }
     }

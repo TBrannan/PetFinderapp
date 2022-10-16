@@ -36,6 +36,7 @@ class Gender extends React.Component {
     const myMap = new Map();
 
     for (var k in something) {
+      myMap.set("Any", "Any");
       myMap.set("Male", something["types"][1]["genders"][0]);
       myMap.set("Female", something["types"][1]["genders"][1]);
     }
