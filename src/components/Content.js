@@ -8,15 +8,18 @@ class Content extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      data: [],
-      selectedOption: "None",
-    };
+    this.state = {};
   }
 
-  handleChange = ({ target }) => {
+  ChangeHandle = ({ target }) => {
     this.setState({
-      selectedOption: target.value,
+      zipcode: target.value,
+    });
+  };
+
+  DistanceHandle = ({ target }) => {
+    this.setState({
+      distance: target.value,
     });
   };
 
@@ -50,8 +53,8 @@ class Content extends React.Component {
             className="droptitle"
             type="text"
             name="zipcode"
-            onChange={this.handleChange}
-            zip={localStorage.setItem("zipcode", this.state.selectedOption)}
+            onChange={this.ChangeHandle}
+            zip={localStorage.setItem("zipcode", this.state.zipcode)}
           ></input>
         </div>
         <br />
@@ -61,8 +64,8 @@ class Content extends React.Component {
             className="droptitle"
             type="text"
             name="distance"
-            onChange={this.handleChange}
-            dist={localStorage.setItem("distance", this.state.selectedOption)}
+            onChange={this.DistanceHandle}
+            dist={localStorage.setItem("distance", this.state.distance)}
           ></input>
           <br />
         </div>
