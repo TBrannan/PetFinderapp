@@ -3,7 +3,6 @@ import Color from "./Color";
 import Gender from "./Gender";
 import Coat from "./Coat";
 import React from "react";
-import Button from "./Button";
 import get_token from "./Token";
 
 class Content extends React.Component {
@@ -37,7 +36,7 @@ class Content extends React.Component {
         )
           .then((response) => response.json())
           .then((results) => {
-            <Button value={results} />;
+            localStorage.setItem("restuls", JSON.stringify(results));
           });
       });
   }
@@ -101,11 +100,6 @@ class Content extends React.Component {
           <br />
         </div>
         <br />
-        <div>
-          <button onClick={() => this.renderButton()} Submit className="btn">
-            submit
-          </button>
-        </div>
       </div>
     );
   }

@@ -1,31 +1,63 @@
 import React from "react";
+import get_token from "./Token";
 
 class Button extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      data: [],
-      selectedOption: "None",
-    };
+    this.state = { results: [], text: "" };
+    this.get_results = this.get_results.bind(this);
   }
-
-  handleChange = ({ target }) => {
-    this.setState({
-      selectedOption: target.value,
-    });
-  };
 
   render() {
-    console.log("HERE");
-    console.log(this.props.value);
+    const results = this.state.results;
+    const myMap = new Map();
+
+    for (var k in results) {
+      var length = results[k].length;
+      for (var i = 0; i < length; i++) {
+        myMap.set(results["animals"][i]["name"], results["animals"][i]["name"]);
+      }
+    }
+
+    const options = [...myMap].map(([name, label]) => ({ name, label }));
     return (
-      <>
-        HELLO HELLO HELLO HELLO HELLO HELLO HELLO HELLO HELLO HELLO
-        {this.props.value}
-      </>
+      <div>
+        <button className="btn" onClick={this.get_results}>
+          Submit
+        </button>
+        <div>
+          {options.map(({ value, label }, index) => (
+            <option value={value}>{label}</option>
+          ))}
+        </div>
+      </div>
     );
   }
-}
 
+  get_results() {
+    console.log("CLICK");
+    let animal = localStorage.getItem("animal");
+    let gender = localStorage.getItem("gender");
+    let color = localStorage.getItem("color");
+    let coat = localStorage.getItem("Coat");
+    let zipcode = localStorage.getItem("zipcode");
+    let distance = localStorage.getItem("distance");
+    get_token()
+      .then((response) => response.json())
+      .then((key) => {
+        const headers = {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${key["access_token"]}`,
+        };
+        fetch(
+          `https://api.petfinder.com/v2/animals?type=${animal}&gender=${gender}&distance=${distance}&location=${zipcode}&coat=${coat}&color=${color}`,
+          { headers }
+        )
+          .then((response) => response.json())
+          .then((results) => {
+            this.setState({ results: results });
+          });
+      });
+  }
+}
 export default Button;
