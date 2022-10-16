@@ -12,9 +12,8 @@ function App() {
       </div>
       <div className="main2">
         <Content />
-        <Button />
       </div>
-      <Results />
+      <Button />
     </div>
   );
 }

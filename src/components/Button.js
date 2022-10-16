@@ -20,12 +20,13 @@ class Button extends React.Component {
     }
 
     const options = [...myMap].map(([name, label]) => ({ name, label }));
+    console.log(options);
     return (
       <div>
         <button className="btn" onClick={this.get_results}>
           Submit
         </button>
-        <div>
+        <div className="main2">
           {options.map(({ value, label }, index) => (
             <option value={value}>{label}</option>
           ))}
