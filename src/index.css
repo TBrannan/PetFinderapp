@@ -18,7 +18,10 @@ body {
   border-radius: 5px;
   position: relative;
 }
-
+.rowC {
+  display: flex;
+  flex-direction: row;
+}
 .header {
   display: flex;
   margin-bottom: 20px;
