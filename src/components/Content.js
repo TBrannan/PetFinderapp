@@ -1,63 +1,73 @@
-import PropTypes from "prop-types";
 import Animal from "./Animal";
 import Color from "./Color";
 import Gender from "./Gender";
+import Coat from "./Coat";
+import React from "react";
 
-const Content = () => {
-  return (
-    <div className="Animal">
-      <br />
-      <div className="box1">
-        <label className="droptitle">Animal</label>
-        <Animal />
-      </div>
-      <br />
-      <div className="box2">
-        <label className="droptitle">Gender</label>
-        <Gender />
-      </div>
-      <br />
-      <div className="box3">
-        <label className="droptitle">Colors</label>
-        <Color />
-      </div>
-      <br />
-      <div className="box4">
-        <label className="droptitle">Gender</label>
-        <select className="droptext" name="gender">
-          <option value="any">Any</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-      <br />
-      <div className="box5">
-        <label className="droptitle">Zicode</label>
-        <input className="droptitle" type="text" name="zipcode" />
-      </div>
-      <br />
-      <div className="box6">
-        <label className="droptitle">Distance</label>
-        <select className="droptext" name="gender">
-          <option value="any">Any</option>
-          <option value="male">10 mi</option>
-          <option value="female">20 mi</option>
-          <option value="other">30 mi</option>
-        </select>
+class Content extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: [],
+      selectedOption: "None",
+    };
+  }
+
+  handleChange = ({ target }) => {
+    this.setState({
+      selectedOption: target.value,
+    });
+  };
+
+  render() {
+    return (
+      <div className="Animal">
         <br />
+        <div className="box1">
+          <label className="droptitle">Animal</label>
+          <Animal />
+        </div>
+        <br />
+        <div className="box2">
+          <label className="droptitle">Gender</label>
+          <Gender />
+        </div>
+        <br />
+        <div className="box3">
+          <label className="droptitle">Colors</label>
+          <Color />
+        </div>
+        <br />
+        <div className="box3">
+          <label className="droptitle">Coats</label>
+          <Coat />
+        </div>
+        <br />
+        <div className="box5">
+          <label className="droptitle">Zicode</label>
+          <input
+            className="droptitle"
+            type="text"
+            name="zipcode"
+            onChange={this.handleChange}
+            zip={localStorage.setItem("zipcode", this.state.selectedOption)}
+          ></input>
+        </div>
+        <br />
+        <div className="box6">
+          <label className="droptitle">Distance (Miles)</label>
+          <input
+            className="droptitle"
+            type="text"
+            name="distance"
+            onChange={this.handleChange}
+            dist={localStorage.setItem("distance", this.state.selectedOption)}
+          ></input>
+          <br />
+        </div>
       </div>
-    </div>
-  );
-};
-
-Content.defaultProps = {
-  title: "Pet Finder",
-  Student: "Stank",
-};
-
-Content.propTypes = {
-  title: PropTypes.string.isRequired,
-};
-
+    );
+  }
+}
 export default Content;

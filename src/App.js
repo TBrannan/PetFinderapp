@@ -2,7 +2,8 @@ import "./App.css";
 import Header from "./components/Header";
 import Content from "./components/Content";
 import Button from "./components/Button";
-import Test from "./components/Test";
+import Submit from "./components/Submit";
+import { Route } from "react-router-dom";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
       <div className="main3">
         <Button />
       </div>
-      <Test />
+      <Submit />
     </div>
   );
 }

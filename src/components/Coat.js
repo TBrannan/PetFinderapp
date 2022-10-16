@@ -1,7 +1,7 @@
 import React from "react";
 import get_token from "./Token";
 
-class Color extends React.Component {
+class Coat extends React.Component {
   constructor(props) {
     super(props);
 
@@ -37,15 +37,15 @@ class Color extends React.Component {
 
     function get_color(number) {
       if (number === "None") {
-        myMap.set("Something", "Select Animal");
-        myMap.set("Something2", "Select Animal");
+        myMap.set("Something", "No Coat Options");
+        myMap.set("Something2", "No Coat Options");
       } else {
         for (var k in something) {
-          var size = Object.keys(something[k][number]["colors"]).length;
+          var size = Object.keys(something[k][number]["coats"]).length;
           for (var i = 0; i < size; i++) {
             myMap.set(
-              something[k][number]["colors"][i],
-              something[k][number]["colors"][i]
+              something[k][number]["coats"][i],
+              something[k][number]["coats"][i]
             );
           }
         }
@@ -61,7 +61,7 @@ class Color extends React.Component {
     } else if (localStorage.getItem("animal") === "Small & Furry") {
       get_color(3);
     } else if (localStorage.getItem("animal") === "Horse") {
-      get_color(4);
+      get_color("None");
     } else if (localStorage.getItem("animal") === "Bird") {
       get_color(5);
     } else if (localStorage.getItem("animal") === "Scales, Fins & Other") {
@@ -81,7 +81,7 @@ class Color extends React.Component {
           className="droptext"
           value={this.state.selectedOption}
           onChange={this.handleChange}
-          storage={localStorage.setItem("Color", this.state.selectedOption)}
+          storage={localStorage.setItem("Coat", this.state.selectedOption)}
         >
           {options.map(({ value, label }, index) => (
             <option value={value}>{label}</option>
@@ -92,4 +92,4 @@ class Color extends React.Component {
   }
 }
 
-export default Color;
+export default Coat;
