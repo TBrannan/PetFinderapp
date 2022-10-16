@@ -7,15 +7,18 @@ class Button extends React.Component {
 
     this.state = {
       data: [],
+      results: [],
       selectedOption: "None",
     };
   }
 
   handleClick() {
-    console.log("CLICK");
-  }
-
-  componentDidMount() {
+    let animal = localStorage.getItem("animal");
+    let gender = localStorage.getItem("gender");
+    let color = localStorage.getItem("color");
+    let coat = localStorage.getItem("Coat");
+    let zipcode = localStorage.getItem("zipcode");
+    let distance = localStorage.getItem("distance");
     get_token()
       .then((response) => response.json())
       .then((key) => {
@@ -23,13 +26,22 @@ class Button extends React.Component {
           "Content-Type": "application/json",
           Authorization: `Bearer ${key["access_token"]}`,
         };
-        fetch("https://api.petfinder.com/v2/types", { headers })
+        fetch(
+          `https://api.petfinder.com/v2/animals?type=${animal}&gender=${gender}&distance=${distance}&location=${zipcode}&coat=${coat}&color=${color}`,
+          { headers }
+        )
           .then((response) => response.json())
-          .then((data) => this.setState({ data: data }));
+          .then((results) => {
+            localStorage.setItem("results", results);
+            console.log(results["animals"][0]);
+          });
       });
   }
 
   render() {
+    const results = localStorage.getItem("results");
+    console.log(results["animals"]);
+
     return (
       <>
         <button onClick={this.handleClick} className="btn">
