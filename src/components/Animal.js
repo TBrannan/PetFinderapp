@@ -1,14 +1,13 @@
 import React from "react";
 import get_token from "./Token";
 
-class Test extends React.Component {
+class Animal extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       data: [],
       selectedOption: "None",
-      value: "Something",
     };
   }
 
@@ -26,10 +25,7 @@ class Test extends React.Component {
           "Content-Type": "application/json",
           Authorization: `Bearer ${key["access_token"]}`,
         };
-        fetch(
-          "https://api.petfinder.com/v2/animals?type=dog&distance=10&location=33619",
-          { headers }
-        )
+        fetch("https://api.petfinder.com/v2/types", { headers })
           .then((response) => response.json())
           .then((data) => this.setState({ data: data }));
       });
@@ -55,6 +51,7 @@ class Test extends React.Component {
           className="droptext"
           value={this.state.selectedOption}
           onChange={this.handleChange}
+          storage={localStorage.setItem("animal", this.state.selectedOption)}
         >
           {options.map(({ value, label }, index) => (
             <option value={value}>{label}</option>
@@ -65,4 +62,4 @@ class Test extends React.Component {
   }
 }
 
-export default Test;
+export default Animal;

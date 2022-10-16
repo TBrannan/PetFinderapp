@@ -1,33 +1,25 @@
 import PropTypes from "prop-types";
-import Request from "./Dropdown";
+import Animal from "./Animal";
+import Color from "./Color";
+import Gender from "./Gender";
 
 const Content = () => {
   return (
-    <div className="dropdown">
+    <div className="Animal">
       <br />
       <div className="box1">
         <label className="droptitle">Animal</label>
-        <Request />
+        <Animal />
       </div>
       <br />
       <div className="box2">
-        <label className="droptitle">Breed</label>
-        <select className="droptext" name="gender">
-          <option value="any">Any</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-        </select>
+        <label className="droptitle">Gender</label>
+        <Gender />
       </div>
       <br />
       <div className="box3">
-        <label className="droptitle">Color</label>
-        <select className="droptext" name="gender">
-          <option value="any">Any</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-        </select>
+        <label className="droptitle">Colors</label>
+        <Color />
       </div>
       <br />
       <div className="box4">

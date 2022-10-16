@@ -1,7 +1,7 @@
 import React from "react";
 import get_token from "./Token";
 
-class PostList extends React.Component {
+class Gender extends React.Component {
   constructor(props) {
     super(props);
 
@@ -36,10 +36,8 @@ class PostList extends React.Component {
     const myMap = new Map();
 
     for (var k in something) {
-      var length = something[k].length;
-      for (var i = 0; i < length; i++) {
-        myMap.set(something[k][i]["name"], something[k][i]["name"]);
-      }
+      myMap.set("Male", something["types"][1]["genders"][0]);
+      myMap.set("Female", something["types"][1]["genders"][1]);
     }
 
     const options = [...myMap].map(([name, label]) => ({ name, label }));
@@ -51,7 +49,7 @@ class PostList extends React.Component {
           className="droptext"
           value={this.state.selectedOption}
           onChange={this.handleChange}
-          Storage={localStorage.setItem("animal", this.state.selectedOption)}
+          storage={localStorage.setItem("gender", this.state.selectedOption)}
         >
           {options.map(({ value, label }, index) => (
             <option value={value}>{label}</option>
@@ -62,4 +60,4 @@ class PostList extends React.Component {
   }
 }
 
-export default PostList;
+export default Gender;

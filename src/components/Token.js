@@ -11,9 +11,13 @@ const send = () => {
       body: JSON.stringify(data),
     });
 
-    if (token != null) {
-      resolve(token);
-    }
+    token.then((response) => {
+      if (response.ok) {
+        resolve(token);
+      } else {
+        reject(token);
+      }
+    });
   });
 
   return get_token;
