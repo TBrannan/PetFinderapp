@@ -10,6 +10,7 @@ class Button extends React.Component {
       results: [],
       selectedOption: "None",
     };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
@@ -32,21 +33,19 @@ class Button extends React.Component {
         )
           .then((response) => response.json())
           .then((results) => {
-            localStorage.setItem("results", results);
-            console.log(results["animals"][0]);
+            this.setState({ results: results["animals"][0] });
           });
       });
   }
 
   render() {
-    const results = localStorage.getItem("results");
-    console.log(results["animals"]);
-
+    const results = this.state.results;
     return (
       <>
         <button onClick={this.handleClick} className="btn">
           Submit
         </button>
+        <h1 className="results1">{results["url"]}</h1>
       </>
     );
   }
