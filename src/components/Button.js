@@ -15,11 +15,11 @@ class Button extends React.Component {
     for (var k in results) {
       var length = results[k].length;
       for (var i = 0; i < length; i++) {
-        myMap.set(results["animals"][i]["name"], results["animals"][i]["name"]);
+        myMap.set(results["animals"][i]["name"], results["animals"][i]["url"]);
       }
     }
 
-    const options = [...myMap].map(([name, label]) => ({ name, label }));
+    const options = [...myMap].map(([name, url]) => ({ name, url }));
     console.log(options);
     return (
       <div>
@@ -27,8 +27,10 @@ class Button extends React.Component {
           Submit
         </button>
         <div className="main2">
-          {options.map(({ value, label }, index) => (
-            <option value={value}>{label}</option>
+          {options.map(({ name, url }, index) => (
+            <>
+              <a href={url}>{name}</a>
+            </>
           ))}
         </div>
       </div>
