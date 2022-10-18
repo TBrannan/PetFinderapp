@@ -11,10 +11,10 @@ body {
 }
 
 .container {
-  max-width: 600px;
+  max-width: 1650;
   margin: 10px 10%;
   overflow: auto;
-  min-height: 1000px;
+  min-height: 1000;
   border-radius: 5px;
   position: relative;
 }

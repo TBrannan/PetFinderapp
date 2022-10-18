@@ -17,9 +17,7 @@ class Button extends React.Component {
       var length = results[k].length;
       for (var i = 0; i < length; i++) {
         myMap.set({
-          name: results["animals"][i]["name"],
-          url: results["animals"][i]["url"],
-          photo: results["animals"][i]["photos"][0]["medium"],
+          animals: results["animals"][i],
         });
       }
     }
@@ -34,9 +32,33 @@ class Button extends React.Component {
         <div className="main2">
           {options.map((animal, index) => (
             <>
-              <a href={animal.values.url}>{animal.values.name}</a>
-              <img src={animal.values.photo} alt={animal.values.name}></img>
-              <hr></hr>
+              {console.log(animal)}
+              <a href={animal.values.animals.url}>
+                {animal.values.animals.name}
+              </a>
+              <img
+                width="600"
+                height="400"
+                src={animal.values.animals.photos[0]["large"]}
+                alt={animal.values.animals.name}
+              ></img>
+              Breed: {animal.values.animals.breeds.primary}
+              <br></br>
+              Age: {animal.values.animals.age}
+              <br></br>
+              Location: {animal.values.animals.contact.address.city},
+              {animal.values.animals.contact.address.state}
+              <br></br>
+              Description:
+              <br></br>
+              {animal.values.animals.description}
+              <hr
+                style={{
+                  color: "red",
+                  backgroundColor: "black",
+                  height: 5,
+                }}
+              />
             </>
           ))}
         </div>
