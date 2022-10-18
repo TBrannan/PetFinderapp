@@ -11,25 +11,32 @@ class Button extends React.Component {
   render() {
     const results = this.state.results;
     const myMap = new Map();
+    console.log(results);
 
     for (var k in results) {
       var length = results[k].length;
       for (var i = 0; i < length; i++) {
-        myMap.set(results["animals"][i]["name"], results["animals"][i]["url"]);
+        myMap.set({
+          name: results["animals"][i]["name"],
+          url: results["animals"][i]["url"],
+          photo: results["animals"][i]["photos"][0]["medium"],
+        });
       }
     }
 
-    const options = [...myMap].map(([name, url]) => ({ name, url }));
-    console.log(options);
+    const options = [...myMap].map(([values]) => ({ values }));
+
     return (
       <div>
         <button className="btn" onClick={this.get_results}>
           Submit
         </button>
         <div className="main2">
-          {options.map(({ name, url }, index) => (
+          {options.map((animal, index) => (
             <>
-              <a href={url}>{name}</a>
+              <a href={animal.values.url}>{animal.values.name}</a>
+              <img src={animal.values.photo} alt={animal.values.name}></img>
+              <hr></hr>
             </>
           ))}
         </div>
