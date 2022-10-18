@@ -11,7 +11,6 @@ class Button extends React.Component {
   render() {
     const results = this.state.results;
     const myMap = new Map();
-    console.log(results);
 
     for (var k in results) {
       var length = results[k].length;
@@ -35,7 +34,6 @@ class Button extends React.Component {
         <div>
           {options.map((animal, index) => (
             <>
-              {console.log(animal)}
               <a href={animal.values.animals.url}>
                 {animal.values.animals.name}
                 <br></br>

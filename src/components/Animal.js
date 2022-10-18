@@ -1,5 +1,6 @@
 import React from "react";
 import get_token from "./Token";
+import get_animal from "./Handlers";
 
 class Animal extends React.Component {
   constructor(props) {
@@ -15,6 +16,8 @@ class Animal extends React.Component {
     this.setState({
       selectedOption: target.value,
     });
+    console.log("CaLLED");
+    get_animal().then((response) => console.log(response));
   };
 
   componentDidMount() {
@@ -34,6 +37,8 @@ class Animal extends React.Component {
   render() {
     const something = this.state.data;
     const myMap = new Map();
+
+    console.log(localStorage.getItem("animal"));
 
     for (var k in something) {
       var length = something[k].length;
