@@ -2,8 +2,8 @@
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  margin: 4;
+  padding: 5;
 }
 
 body {
@@ -12,31 +12,26 @@ body {
 
 .container {
   max-width: 1650;
-  margin: 10px 10%;
   overflow: auto;
   min-height: 1000;
-  border-radius: 5px;
+  border-radius: 0px;
   position: relative;
-}
-.rowC {
   display: flex;
-  flex-direction: row;
-}
-.header {
-  display: flex;
-  margin-bottom: 20px;
+  flex-direction: column;
+  align-content: center;
+  padding: 10px 10px;
 }
 
 .btn {
   display: block;
   background: #000;
   color: #fff;
+  border-radius: 10px;
   font-size: 15px;
   font-family: inherit;
-}
-
-.btn-center {
-  height: 30px;
+  padding: 10px 100px;
+  border-width: 0.2em;
+  border-radius: 0.5em;
 }
 
 .btn:focus {
@@ -158,6 +153,7 @@ h1 {
   border-spacing: 3em;
 }
 
-.results {
+.main3 {
   display: flex;
+  padding: 10px;
 }

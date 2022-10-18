@@ -26,22 +26,27 @@ class Button extends React.Component {
 
     return (
       <div>
-        <button className="btn" onClick={this.get_results}>
-          Submit
-        </button>
-        <div className="main2">
+        <input
+          className="btn"
+          type="submit"
+          value="Search"
+          onClick={this.get_results}
+        />
+        <div>
           {options.map((animal, index) => (
             <>
               {console.log(animal)}
               <a href={animal.values.animals.url}>
                 {animal.values.animals.name}
+                <br></br>
               </a>
               <img
-                width="600"
+                width="400"
                 height="400"
                 src={animal.values.animals.photos[0]["large"]}
                 alt={animal.values.animals.name}
               ></img>
+              <br></br>
               Breed: {animal.values.animals.breeds.primary}
               <br></br>
               Age: {animal.values.animals.age}
@@ -54,7 +59,7 @@ class Button extends React.Component {
               {animal.values.animals.description}
               <hr
                 style={{
-                  color: "red",
+                  color: "black",
                   backgroundColor: "black",
                   height: 5,
                 }}
