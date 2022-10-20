@@ -1,6 +1,7 @@
 import React from "react";
-import get_token from "./Token";
-import get_animal from "./Handlers";
+import Token from "./Token";
+import color_handler from "./handler";
+
 
 class Animal extends React.Component {
   constructor(props) {
@@ -10,35 +11,38 @@ class Animal extends React.Component {
       data: [],
       selectedOption: "None",
     };
+
+
   }
+  
 
   handleChange = ({ target }) => {
     this.setState({
       selectedOption: target.value,
     });
-    console.log("CaLLED");
-    get_animal().then((response) => console.log(response));
+    const Mapper = color_handler(target.value)
+    Mapper.then((myMap)=> { const options = [...myMap].map(([name, label]) => ({ name, label })); localStorage.setItem("color_map",JSON.stringify(options))})
+
   };
 
+  
   componentDidMount() {
-    get_token()
-      .then((response) => response.json())
-      .then((key) => {
-        const headers = {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${key["access_token"]}`,
-        };
-        fetch("https://api.petfinder.com/v2/types", { headers })
-          .then((response) => response.json())
-          .then((data) => this.setState({ data: data }));
-      });
-  }
+    const token =  Token()
+    token.then((token) => {
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    };
+    fetch("https://api.petfinder.com/v2/types", { headers })
+              .then((response) => response.json())
+              .then((data) => localStorage.setItem("data",JSON.stringify(data)));
+          });
+      }
+
 
   render() {
-    const something = this.state.data;
+    const something = JSON.parse(localStorage.getItem("data"))
     const myMap = new Map();
-
-    console.log(localStorage.getItem("animal"));
 
     for (var k in something) {
       var length = something[k].length;

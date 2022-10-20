@@ -3,7 +3,7 @@ import Color from "./Color";
 import Gender from "./Gender";
 import Coat from "./Coat";
 import React from "react";
-import get_token from "./Token";
+import get_token from "../App.js";
 
 class Content extends React.Component {
   constructor(props) {

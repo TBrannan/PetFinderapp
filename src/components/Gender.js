@@ -1,5 +1,5 @@
 import React from "react";
-import get_token from "./Token";
+import get_token from "../App.js";
 
 class Gender extends React.Component {
   constructor(props) {
@@ -17,19 +17,19 @@ class Gender extends React.Component {
     });
   };
 
-  componentDidMount() {
-    get_token()
-      .then((response) => response.json())
-      .then((key) => {
-        const headers = {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${key["access_token"]}`,
-        };
-        fetch("https://api.petfinder.com/v2/types", { headers })
-          .then((response) => response.json())
-          .then((data) => this.setState({ data: data }));
-      });
-  }
+
+
+  //     .then((response) => response.json())
+  //     .then((key) => {
+  //       const headers = {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${key["access_token"]}`,
+  //       };
+  //       fetch("https://api.petfinder.com/v2/types", { headers })
+  //         .then((response) => response.json())
+  //         .then((data) => this.setState({ data: data }));
+  //     });
+  // }
 
   render() {
     const something = this.state.data;
