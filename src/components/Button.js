@@ -72,8 +72,8 @@ class Button extends React.Component {
 
   get_results() {
     console.log("CLICK");
+    var gender = localStorage.getItem("gender");
     let animal = localStorage.getItem("animal");
-    let gender = localStorage.getItem("gender");
     let color = localStorage.getItem("color");
     let coat = localStorage.getItem("coat");
     let zipcode = localStorage.getItem("zipcode");
@@ -84,19 +84,19 @@ class Button extends React.Component {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       };
-    if (gender ==="Any"){
-      localStorage.setItem("URL",`https://api.petfinder.com/v2/animals?type=${animal}&distance=${distance}&location=${zipcode}&coat=${coat}&color=${color}`)
-    }
-      else if (animal ==="Bird"){
-        localStorage.setItem("URL",`https://api.petfinder.com/v2/animals?type=${animal}&distance=${distance}&location=${zipcode}&color=${color}`)
+      if(gender ==="Any"){
+        gender = ''
+      }
+      if (animal ==="Bird"){
+        localStorage.setItem("URL",`https://api.petfinder.com/v2/animals?type=${animal}&distance=${distance}&location=${zipcode}&color=${color}&gender=${gender}`)
     }else if (animal ==="Horse"){
-      localStorage.setItem("URL",`https://api.petfinder.com/v2/animals?type=${animal}&distance=${distance}&location=${zipcode}&color=${color}`)
+      localStorage.setItem("URL",`https://api.petfinder.com/v2/animals?type=${animal}&distance=${distance}&location=${zipcode}&color=${color}&gender=${gender}`)
   }else if (animal ==="Small & Furry"){
     let animal = 'small-furry'
-    localStorage.setItem("URL",`https://api.petfinder.com/v2/animals?type=${animal}&distance=${distance}&location=${zipcode}&color=${color}`)
+    localStorage.setItem("URL",`https://api.petfinder.com/v2/animals?type=${animal}&distance=${distance}&location=${zipcode}&color=${color}&gender=${gender}`)
 }else if (animal ==="Scales, Fins & Other"){
   let animal = 'scales-fins-others'
-  localStorage.setItem("URL",`https://api.petfinder.com/v2/animals?type=${animal}&distance=${distance}&location=${zipcode}&color=${color}`)
+  localStorage.setItem("URL",`https://api.petfinder.com/v2/animals?type=${animal}&distance=${distance}&location=${zipcode}&color=${color}&gender=${gender}`)
 }else{
       localStorage.setItem("URL", `https://api.petfinder.com/v2/animals?type=${animal}&gender=${gender}&distance=${distance}&location=${zipcode}&coat=${coat}&color=${color}`)
     }
