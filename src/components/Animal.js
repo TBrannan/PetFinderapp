@@ -1,7 +1,6 @@
 import React from "react";
 import Token from "./Token";
-import color_handler from "./handler";
-
+import Handler from "./Handler"
 
 class Animal extends React.Component {
   constructor(props) {
@@ -11,8 +10,6 @@ class Animal extends React.Component {
       data: [],
       selectedOption: "None",
     };
-
-
   }
   
 
@@ -20,9 +17,11 @@ class Animal extends React.Component {
     this.setState({
       selectedOption: target.value,
     });
-    const Mapper = color_handler(target.value)
-    Mapper.then((myMap)=> { const options = [...myMap].map(([name, label]) => ({ name, label })); localStorage.setItem("color_map",JSON.stringify(options))})
-
+    console.log("HERE poopy")
+    const ColorMapper = Handler.color_handler(target.value)
+    ColorMapper.then((myMap)=> { const options = [...myMap].map(([name, label]) => ({ name, label })); localStorage.setItem("color_map",JSON.stringify(options))})
+    const CoatMapper = Handler.coat_handler(target.value)
+    CoatMapper.then((myMap)=> { const options = [...myMap].map(([name, label]) => ({ name, label })); localStorage.setItem("coat_map",JSON.stringify(options))})
   };
 
   

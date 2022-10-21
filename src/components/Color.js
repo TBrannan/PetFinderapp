@@ -14,7 +14,6 @@ class Color extends React.Component {
     this.setState({
       selectedOption: target.value,
     });
-    console.log(this.state.data)
   };
 
 

@@ -11,7 +11,6 @@ class Button extends React.Component {
   render() {
     const results = this.state.results;
     const myMap = new Map();
-    console.log(results)
 
     for (var k in results) {
       var length = results[k].length;
@@ -76,7 +75,7 @@ class Button extends React.Component {
     let animal = localStorage.getItem("animal");
     let gender = localStorage.getItem("gender");
     let color = localStorage.getItem("color");
-    let coat = localStorage.getItem("Coat");
+    let coat = localStorage.getItem("coat");
     let zipcode = localStorage.getItem("zipcode");
     let distance = localStorage.getItem("distance");
     const token =  Token()

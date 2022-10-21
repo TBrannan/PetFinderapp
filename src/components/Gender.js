@@ -1,5 +1,4 @@
 import React from "react";
-import get_token from "../App.js";
 
 class Gender extends React.Component {
   constructor(props) {
@@ -17,13 +16,11 @@ class Gender extends React.Component {
     });
   };
 
-
-
   render() {
     const something = JSON.parse(localStorage.getItem("data"))
-    console.log(something)
     const myMap = new Map();
 
+    // eslint-disable-next-line
     for (var k in something) {
       myMap.set("Any", "Any");
       myMap.set("Male", something["types"][1]["genders"][0]);
