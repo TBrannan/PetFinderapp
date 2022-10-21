@@ -29,7 +29,7 @@ class Color extends React.Component {
           value={this.state.selectedOption}
           onChange={this.handleChange}
           onClick={this.handleChange}
-          storage={localStorage.setItem("Color", this.state.selectedOption)}
+          storage={localStorage.setItem("color", this.state.selectedOption)}
         >
           {options.map(({ value, label }, index) => (
             <option value={value}>{label}</option>

@@ -1,16 +1,17 @@
 import React from "react";
-import get_token from "../App.js";
+import Token from "./Token";
 
 class Button extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { results: [], text: "" };
+    this.state = { results: [], text: "",URL:"" };
     this.get_results = this.get_results.bind(this);
   }
 
   render() {
     const results = this.state.results;
     const myMap = new Map();
+    console.log(results)
 
     for (var k in results) {
       var length = results[k].length;
@@ -69,6 +70,7 @@ class Button extends React.Component {
     );
   }
 
+
   get_results() {
     console.log("CLICK");
     let animal = localStorage.getItem("animal");
@@ -77,21 +79,30 @@ class Button extends React.Component {
     let coat = localStorage.getItem("Coat");
     let zipcode = localStorage.getItem("zipcode");
     let distance = localStorage.getItem("distance");
-    get_token()
-      .then((response) => response.json())
-      .then((key) => {
-        const headers = {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${key["access_token"]}`,
-        };
-        fetch(
-          `https://api.petfinder.com/v2/animals?type=${animal}&gender=${gender}&distance=${distance}&location=${zipcode}&coat=${coat}&color=${color}`,
-          { headers }
-        )
-          .then((response) => response.json())
-          .then((results) => {
-            this.setState({ results: results });
-          });
+    const token =  Token()
+    token.then((token) => {
+      const headers = {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      };
+    if (gender ==="Any"){
+      localStorage.setItem("URL",`https://api.petfinder.com/v2/animals?type=${animal}&distance=${distance}&location=${zipcode}&coat=${coat}&color=${color}`)
+    }
+      else if (animal ==="Bird"){
+        localStorage.setItem("URL",`https://api.petfinder.com/v2/animals?type=${animal}&distance=${distance}&location=${zipcode}&color=${color}`)
+    }else if (animal ==="Horse"){
+      localStorage.setItem("URL",`https://api.petfinder.com/v2/animals?type=${animal}&distance=${distance}&location=${zipcode}&color=${color}`)
+  }else if (animal ==="Small & Furry"){
+    let animal = 'small-furry'
+    localStorage.setItem("URL",`https://api.petfinder.com/v2/animals?type=${animal}&distance=${distance}&location=${zipcode}&color=${color}`)
+}else if (animal ==="Scales, Fins & Other"){
+  let animal = 'scales-fins-others'
+  localStorage.setItem("URL",`https://api.petfinder.com/v2/animals?type=${animal}&distance=${distance}&location=${zipcode}&color=${color}`)
+}else{
+      localStorage.setItem("URL", `https://api.petfinder.com/v2/animals?type=${animal}&gender=${gender}&distance=${distance}&location=${zipcode}&coat=${coat}&color=${color}`)
+    }
+    fetch(localStorage.getItem("URL"),{headers}).then((ressponse) => ressponse.json()).then((results)=> {this.setState({results:results})})
+      
       });
   }
 }

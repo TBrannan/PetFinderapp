@@ -19,20 +19,9 @@ class Gender extends React.Component {
 
 
 
-  //     .then((response) => response.json())
-  //     .then((key) => {
-  //       const headers = {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${key["access_token"]}`,
-  //       };
-  //       fetch("https://api.petfinder.com/v2/types", { headers })
-  //         .then((response) => response.json())
-  //         .then((data) => this.setState({ data: data }));
-  //     });
-  // }
-
   render() {
-    const something = this.state.data;
+    const something = JSON.parse(localStorage.getItem("data"))
+    console.log(something)
     const myMap = new Map();
 
     for (var k in something) {
