@@ -93,8 +93,8 @@ class Button extends React.Component {
         Authorization: `Bearer ${token}`,
       };
       var URL = `https://api.petfinder.com/v2/animals?type=${animal}&distance=${distance}&location=${zipcode}`
-      if( distance === "None" || distance ==="undefined" ||zipcode === "None" || zipcode ==="undefined" ||animal === "None" || animal === "undefined" ){
-        return alert("Plese Select Animal, Distance, and Zipcode")
+      if( distance === "None" || distance === "undefined" ||zipcode === "None" || zipcode === "undefined", animal === "None" || animal === "undefined" ){
+        return alert("Please Select Animal, Distance, and Zipcode")
       }
       if(gender !== "Any" && gender !== "None" && gender !== "undefined"){
         URL += `&gender=${gender}`
