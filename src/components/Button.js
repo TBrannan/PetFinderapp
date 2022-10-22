@@ -80,6 +80,12 @@ class Button extends React.Component {
     var coat = localStorage.getItem("coat");
     var zipcode = localStorage.getItem("zipcode");
     var distance = localStorage.getItem("distance");
+    if (animal === "Small & Furry"){
+      animal = "small-furry"
+    }
+    if(animal ==="Scales, Fins & Other"){
+      animal = "scales-fins-others"
+    }
     const token =  Token()
     token.then((token) => {
       const headers = {
