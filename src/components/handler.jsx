@@ -35,6 +35,7 @@ const get_color = async (number)=>{
         for (var k in something) {
           var size = Object.keys(something[k][number]["colors"]).length;
           for (var i = 0; i < size; i++) {
+            myMap.set("Any", "Any");
             myMap.set(
               something[k][number]["colors"][i],
               something[k][number]["colors"][i]
@@ -52,6 +53,7 @@ function get_coat(number) {
     for (var k in something) {
       var size = Object.keys(something[k][number]["coats"]).length;
       for (var i = 0; i < size; i++) {
+        myMap.set("Any", "Any");
         myMap.set(
           something[k][number]["coats"][i],
           something[k][number]["coats"][i]

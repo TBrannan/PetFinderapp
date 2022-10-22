@@ -73,19 +73,34 @@ class Button extends React.Component {
   get_results() {
     console.log("CLICK");
     var gender = localStorage.getItem("gender");
-    let animal = localStorage.getItem("animal");
-    let color = localStorage.getItem("color");
-    let coat = localStorage.getItem("coat");
-    let zipcode = localStorage.getItem("zipcode");
-    let distance = localStorage.getItem("distance");
+    var animal = localStorage.getItem("animal");
+    var color = localStorage.getItem("color");
+    var coat = localStorage.getItem("coat");
+    var zipcode = localStorage.getItem("zipcode");
+    var distance = localStorage.getItem("distance");
     const token =  Token()
     token.then((token) => {
       const headers = {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       };
-      if(gender ==="Any"){
+      if( distance === "None" || distance ==="undefined" ||zipcode === "None" || zipcode ==="undefined" ){
+        return alert("Plese Select Distance and Zipcode")
+      }
+      if(gender ==="Any" || gender === "None" || gender ==="undefined"){
         gender = ''
+      }
+      if(color ==="Any" || color === "None"|| color ==="undefined"){
+        color = ''
+      }
+      if(coat ==="Any" || coat === "None"|| coat ==="undefined"){
+        coat = ''
+      }
+      if(distance ==="Any" || distance === "None"|| distance ==="undefined"){
+        distance = ''
+      }
+      if(zipcode ==="Any" || zipcode === "None"|| zipcode ==="undefined"){
+        zipcode = ''
       }
       if (animal ==="Bird"){
         localStorage.setItem("URL",`https://api.petfinder.com/v2/animals?type=${animal}&distance=${distance}&location=${zipcode}&color=${color}&gender=${gender}`)
