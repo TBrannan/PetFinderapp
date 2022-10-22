@@ -15,13 +15,15 @@ class Button extends React.Component {
     for (var k in results) {
       var length = results[k].length;
       for (var i = 0; i < length; i++) {
+        if(results["animals"][i]["photos"].length !==0){
         myMap.set({
           animals: results["animals"][i],
         });
       }
-    }
+    }}
 
     const options = [...myMap].map(([values]) => ({ values }));
+
 
     return (
       <div>
@@ -84,39 +86,22 @@ class Button extends React.Component {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       };
-      if( distance === "None" || distance ==="undefined" ||zipcode === "None" || zipcode ==="undefined" ){
-        return alert("Plese Select Distance and Zipcode")
+      var URL = `https://api.petfinder.com/v2/animals?type=${animal}&distance=${distance}&location=${zipcode}`
+      if( distance === "None" || distance ==="undefined" ||zipcode === "None" || zipcode ==="undefined" ||animal === "None" || animal === "undefined" ){
+        return alert("Plese Select Animal, Distance, and Zipcode")
       }
-      if(gender ==="Any" || gender === "None" || gender ==="undefined"){
-        gender = ''
+      if(gender !== "Any" && gender !== "None" && gender !== "undefined"){
+        URL += `&gender=${gender}`
       }
-      if(color ==="Any" || color === "None"|| color ==="undefined"){
-        color = ''
+      if(color !== "Any" && color !== "None" && color !== "undefined"){
+        URL += `&color=${color}`
       }
-      if(coat ==="Any" || coat === "None"|| coat ==="undefined"){
-        coat = ''
+      if(coat !== "Any" && coat !== "None" && coat !== "undefined"){
+        URL +=`&coat=${coat}`
       }
-      if(distance ==="Any" || distance === "None"|| distance ==="undefined"){
-        distance = ''
-      }
-      if(zipcode ==="Any" || zipcode === "None"|| zipcode ==="undefined"){
-        zipcode = ''
-      }
-      if (animal ==="Bird"){
-        localStorage.setItem("URL",`https://api.petfinder.com/v2/animals?type=${animal}&distance=${distance}&location=${zipcode}&color=${color}&gender=${gender}`)
-    }else if (animal ==="Horse"){
-      localStorage.setItem("URL",`https://api.petfinder.com/v2/animals?type=${animal}&distance=${distance}&location=${zipcode}&color=${color}&gender=${gender}`)
-  }else if (animal ==="Small & Furry"){
-    let animal = 'small-furry'
-    localStorage.setItem("URL",`https://api.petfinder.com/v2/animals?type=${animal}&distance=${distance}&location=${zipcode}&color=${color}&gender=${gender}`)
-}else if (animal ==="Scales, Fins & Other"){
-  let animal = 'scales-fins-others'
-  localStorage.setItem("URL",`https://api.petfinder.com/v2/animals?type=${animal}&distance=${distance}&location=${zipcode}&color=${color}&gender=${gender}`)
-}else{
-      localStorage.setItem("URL", `https://api.petfinder.com/v2/animals?type=${animal}&gender=${gender}&distance=${distance}&location=${zipcode}&coat=${coat}&color=${color}`)
-    }
+      localStorage.setItem("URL", URL)
     fetch(localStorage.getItem("URL"),{headers}).then((ressponse) => ressponse.json()).then((results)=> {this.setState({results:results})})
-      
+
       });
   }
 }
